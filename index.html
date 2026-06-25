@@ -1,83 +1,105 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan: Eni Saputri, S.Pd., Gr & La Ode Darmono</title>
+    <title>Undangan Pernikahan: Eni & Darmono</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Great Vibes & Montserrat -->
+    <!-- Google Fonts: Cinzel (Luxury Serif), Pinyon Script (Classic Calligraphy) & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     <!-- Font Awesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS (Animate on Scroll) untuk Animasi yang Cantik -->
+    <!-- AOS (Animate on Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #faf8f5;
-            color: #4a4a4a;
+            background-color: #FAF6F0;
+            color: #2D2A26;
             overflow-x: hidden;
         }
-        .font-serif-wedding {
-            font-family: 'Great Vibes', cursive;
+        .font-display {
+            font-family: 'Cinzel', serif;
+        }
+        .font-calligraphy {
+            font-family: 'Pinyon Script', cursive;
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #FAF6F0;
         }
         ::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 4px;
+            background: #C5A880;
+            border-radius: 3px;
         }
-        /* Animasi berputar untuk piringan musik */
-        @keyframes spin {
+        /* Music disk rotation */
+        @keyframes spin-slow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
         .spinning {
-            animation: spin 8s linear infinite;
+            animation: spin-slow 12s linear infinite;
+        }
+        /* Custom border overlay effect */
+        .gold-border-decor::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            pointer-events: none;
+            z-index: 10;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- MUSIK LATAR & TOMBOL AUDIO -->
+    <!-- AUDIO PLAYER & FLOATING CONTROLLER -->
     <audio id="backsound" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button id="music-btn" class="fixed bottom-6 right-6 z-50 bg-amber-600 text-white p-4 rounded-full shadow-2xl hover:bg-amber-700 transition-all duration-300 flex items-center justify-center spinning hidden" onclick="toggleMusic()">
-        <i id="music-icon" class="fa-solid fa-music text-xl"></i>
+    <button id="music-btn" class="fixed bottom-8 right-8 z-50 bg-[#1C1917]/90 text-[#D4AF37] border border-[#C5A880]/50 p-4 rounded-full shadow-2xl hover:bg-[#2D2A26] hover:scale-105 transition-all duration-300 flex items-center justify-center spinning hidden" onclick="toggleMusic()">
+        <i id="music-icon" class="fa-solid fa-compact-disc text-2xl"></i>
     </button>
 
-    <!-- OVERLAY UNDANGAN (SAMPUL DEPAN) -->
-    <div id="welcome-screen" class="fixed inset-0 z-50 bg-stone-900 text-white flex flex-col items-center justify-center px-4 transition-all duration-1000">
-        <!-- Background Image dengan opacity rendah -->
-        <div class="absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200');"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/90 to-stone-950"></div>
+    <!-- OVERLAY UNDANGAN (SAMPUL DEPAN PREMIUM) -->
+    <div id="welcome-screen" class="fixed inset-0 z-50 bg-[#1C1917] text-white flex flex-col items-center justify-center px-6 transition-all duration-1000 gold-border-decor">
+        <!-- Background Image dengan opacity sangat rendah dan estetik -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#12100E] via-transparent to-[#12100E]"></div>
 
-        <div class="relative z-10 text-center max-w-lg">
-            <p class="text-amber-400 font-medium tracking-widest text-xs uppercase mb-4">Undangan Pernikahan</p>
-            <h1 class="font-serif-wedding text-6xl md:text-7xl text-amber-200 my-4">Eni Saputri & 
-                 La Ode Darmono</h1>
-            <p class="text-stone-300 text-sm italic mb-8 px-6">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..."</p>
+        <div class="relative z-10 text-center max-w-xl flex flex-col items-center">
+            <!-- Top Elegant SVG Leaf -->
+            <svg class="w-10 h-10 text-[#C5A880] mb-4 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M12 2C12 2 14.5 7.5 12 12C9.5 16.5 12 22 12 22M12 2C12 2 9.5 7.5 12 12C14.5 16.5 12 22 12 22" stroke-linecap="round"/>
+            </svg>
             
-            <div class="bg-stone-800/80 border border-amber-500/30 rounded-xl p-6 mb-8 backdrop-blur-sm mx-4">
-                <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                <h3 id="tamu-name" class="text-lg font-semibold text-amber-100">Tamu Undangan Istimewa</h3>
-                <p class="text-xs text-stone-400 mt-2">Kami Mengundang Anda untuk Hadir di Hari Bahagia Kami</p>
+            <p class="text-[#C5A880] font-display tracking-[0.3em] text-xs uppercase mb-4">Undangan Pernikahan</p>
+            
+            <h1 class="font-display text-4xl md:text-5xl font-light tracking-wide text-[#FAF6F0] mb-2">ENI & DARMONO</h1>
+            <p class="font-calligraphy text-5xl md:text-6xl text-[#C5A880] my-4">Wedding Celebration</p>
+            
+            <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent my-6"></div>
+
+            <div class="bg-white/5 border border-[#C5A880]/30 rounded-2xl p-6 md:p-8 mb-8 backdrop-blur-md max-w-sm w-full mx-4">
+                <p class="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-2">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <h3 id="tamu-name" class="text-lg font-display font-medium text-[#FAF6F0] tracking-wide">Tamu Undangan Istimewa</h3>
+                <p class="text-[10px] text-stone-400 mt-3 italic">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam momen bahagia kami.</p>
             </div>
 
-            <button onclick="openInvitation()" class="bg-amber-500 hover:bg-amber-600 text-stone-900 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-amber-500/20 transition-all duration-300 uppercase tracking-wider text-xs">
-                <i class="fa-solid fa-envelope-open mr-2"></i> Buka Undangan
+            <button onclick="openInvitation()" class="group relative overflow-hidden bg-gradient-to-r from-[#C5A880] to-[#E2C799] text-[#1C1917] font-semibold px-10 py-4 rounded-full shadow-xl hover:shadow-[#C5A880]/20 transition-all duration-300 uppercase tracking-[0.2em] text-[11px]">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-envelope-open text-xs"></i> Buka Undangan
+                </span>
+                <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
             </button>
         </div>
     </div>
@@ -85,73 +107,86 @@
     <!-- MAIN CONTENT -->
     <div id="main-content" class="hidden">
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION (EDITORIAL STYLE) -->
         <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1465408953385-7c4627c29435?auto=format&fit=crop&q=80&w=1200');"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/60 to-stone-950"></div>
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] scale-105" style="background-image: url('https://images.unsplash.com/photo-1465408953385-7c4627c29435?auto=format&fit=crop&q=80&w=1200');"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1C1917]/80 via-[#1C1917]/50 to-[#FAF6F0]"></div>
             
-            <div class="relative z-10 text-white max-w-xl" data-aos="zoom-in">
-                <span class="text-amber-400 uppercase tracking-widest text-xs md:text-sm font-semibold">The Wedding of</span>
-                <h1 class="font-serif-wedding text-7xl md:text-8xl text-amber-100 my-6">Eni Saputri & La Ode Darmono</h1>
-                <p class="text-stone-300 tracking-widest text-sm md:text-base font-light">Senin, 06 Juli 2026</p>
+            <div class="relative z-10 text-[#FAF6F0] max-w-2xl" data-aos="zoom-in">
+                <span class="text-[#C5A880] uppercase tracking-[0.3em] text-xs font-semibold">The Wedding of</span>
+                <h1 class="font-display text-5xl md:text-7xl font-light tracking-wide text-[#FAF6F0] my-6">ENI & DARMONO</h1>
+                <p class="font-calligraphy text-6xl md:text-7xl text-[#C5A880] my-2">The Beginning of Forever</p>
+                <p class="text-[#FAF6F0]/90 tracking-[0.2em] text-xs md:text-sm uppercase mt-6 font-medium">Senin, 06 Juli 2026</p>
                 
-                <div class="mt-12 flex justify-center">
-                    <a href="#acara" class="animate-bounce bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500 text-amber-200 px-6 py-3 rounded-full text-xs uppercase tracking-wider transition-all duration-300">
-                        Lihat Detail Acara <i class="fa-solid fa-arrow-down ml-2"></i>
+                <div class="mt-16 flex justify-center">
+                    <a href="#acara" class="border border-[#C5A880] hover:bg-[#C5A880] hover:text-[#1C1917] text-[#C5A880] px-8 py-3 rounded-full text-[10px] uppercase tracking-[0.2em] transition-all duration-500 backdrop-blur-xs">
+                        Rangkaian Acara <i class="fa-solid fa-arrow-down ml-2 animate-bounce"></i>
                     </a>
                 </div>
             </div>
         </header>
 
         <!-- SURAH / QUOTE SECTION -->
-        <section class="py-16 px-4 bg-amber-50/40 text-center">
-            <div class="max-w-2xl mx-auto" data-aos="fade-up">
-                <div class="text-amber-600 mb-6 text-3xl"><i class="fa-solid fa-heart"></i></div>
-                <p class="text-stone-600 italic leading-relaxed text-sm md:text-base">
+        <section class="py-24 px-6 bg-white relative overflow-hidden">
+            <!-- Background Abstract Golden Circles -->
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full border border-[#C5A880]/10 pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full border border-[#C5A880]/10 pointer-events-none"></div>
+
+            <div class="max-w-2xl mx-auto text-center relative z-10" data-aos="fade-up">
+                <span class="font-calligraphy text-4xl text-[#C5A880] block mb-2">Beautiful Words</span>
+                <div class="w-12 h-[1px] bg-[#C5A880] mx-auto mb-8"></div>
+                <p class="text-[#2D2A26]/80 italic leading-relaxed text-sm md:text-base font-light tracking-wide px-4 md:px-0">
                     "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
                 </p>
-                <span class="block mt-4 text-xs font-semibold tracking-wider text-amber-800 uppercase">( Ar-Rum: 21 )</span>
+                <span class="block mt-6 text-xs font-semibold tracking-[0.25em] text-[#C5A880] uppercase">( Ar-Rum: 21 )</span>
             </div>
         </section>
 
-        <!-- BRIDE & GROOM SECTION -->
-        <section id="mempelai" class="py-20 px-4 bg-white">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="font-serif-wedding text-5xl text-amber-700 mb-2" data-aos="fade-up">Kedua Mempelai</h2>
-                <p class="text-stone-500 text-xs uppercase tracking-widest mb-16" data-aos="fade-up" data-aos-delay="100">Mohon Doa Restu Anda</p>
+        <!-- BRIDE & GROOM SECTION (FINE DESIGN) -->
+        <section id="mempelai" class="py-24 px-6 bg-[#FAF6F0] relative">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="font-display text-3xl md:text-4xl text-[#1C1917] font-light tracking-[0.2em] mb-2" data-aos="fade-up">KEDUA MEMPELAI</h2>
+                <p class="text-[#C5A880] font-calligraphy text-4xl mb-16" data-aos="fade-up" data-aos-delay="100">The Groom & The Bride</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-start">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start relative">
+                    <!-- Elegant Center Decorative Line for Desktop -->
+                    <div class="hidden lg:block absolute left-1/2 top-12 bottom-12 w-[1px] bg-gradient-to-b from-transparent via-[#C5A880]/40 to-transparent"></div>
+
                     <!-- Mempelai Wanita -->
-                    <div class="flex flex-col items-center p-6 bg-amber-50/20 rounded-2xl border border-amber-100/50" data-aos="fade-right">
-                        <div class="text-amber-600/30 text-5xl mb-4">
-                            <i class="fa-solid fa-leaf"></i>
+                    <div class="flex flex-col items-center p-8 md:p-12 bg-white rounded-3xl border border-[#C5A880]/20 shadow-sm transition-all duration-500 hover:shadow-md" data-aos="fade-right">
+                        <div class="w-16 h-16 bg-[#FAF6F0] border border-[#C5A880]/30 rounded-full flex items-center justify-center text-[#C5A880] text-2xl mb-6 shadow-xs">
+                            <i class="fa-solid fa-leaf opacity-60"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-stone-800">ENI SAPUTRI</h3>
-                        <span class="text-lg font-semibold text-amber-700 font-serif-wedding mt-1">( Eni )</span>
-                        <p class="text-amber-600 text-xs font-medium uppercase tracking-widest mt-2">Mempelai Wanita</p>
-                        <div class="w-12 h-0.5 bg-amber-500/30 my-4"></div>
-                        <p class="text-stone-500 text-sm leading-relaxed max-w-xs">
-                            Putri Keempat dari <br>
-                            <span class="font-semibold text-stone-700">Bapak Alm. La Manasu</span> <br>
-                            dengan <br>
-                            <span class="font-semibold text-stone-700">Almh. Ibu Wa Molisa</span>
+                        <h3 class="text-xl md:text-2xl font-display font-semibold text-[#1C1917] tracking-wider">ENI SAPUTRI, S.Pd</h3>
+                        <span class="text-lg font-calligraphy text-[#C5A880] mt-1">( Eni )</span>
+                        <p class="text-[#C5A880] text-[10px] font-bold uppercase tracking-[0.25em] mt-3">Mempelai Wanita</p>
+                        
+                        <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent my-6"></div>
+                        
+                        <p class="text-[#2D2A26]/70 text-xs md:text-sm leading-loose tracking-wide">
+                            Putri Keempat dari Pasangan Tercinta<br>
+                            <span class="font-medium text-[#1C1917]">Bapak Alm. La Manasu</span><br>
+                            &<br>
+                            <span class="font-medium text-[#1C1917]">Almh. Ibu Wa Molisa</span>
                         </p>
                     </div>
 
                     <!-- Mempelai Pria -->
-                    <div class="flex flex-col items-center p-6 bg-amber-50/20 rounded-2xl border border-amber-100/50" data-aos="fade-left">
-                        <div class="text-amber-600/30 text-5xl mb-4">
-                            <i class="fa-solid fa-leaf"></i>
+                    <div class="flex flex-col items-center p-8 md:p-12 bg-white rounded-3xl border border-[#C5A880]/20 shadow-sm transition-all duration-500 hover:shadow-md" data-aos="fade-left">
+                        <div class="w-16 h-16 bg-[#FAF6F0] border border-[#C5A880]/30 rounded-full flex items-center justify-center text-[#C5A880] text-2xl mb-6 shadow-xs">
+                            <i class="fa-solid fa-leaf opacity-60"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-stone-800">LA ODE DHARMONO</h3>
-                        <span class="text-lg font-semibold text-amber-700 font-serif-wedding mt-1">( Agus )</span>
-                        <p class="text-amber-600 text-xs font-medium uppercase tracking-widest mt-2">Mempelai Pria</p>
-                        <div class="w-12 h-0.5 bg-amber-500/30 my-4"></div>
-                        <p class="text-stone-500 text-sm leading-relaxed max-w-xs">
-                            Putra Pertama dari <br>
-                            <span class="font-semibold text-stone-700">Bapak La Ode Mbubu</span> <br>
-                            dengan <br>
-                            <span class="font-semibold text-stone-700">Almh. Ibu Wa Mohidha</span>
+                        <h3 class="text-xl md:text-2xl font-display font-semibold text-[#1C1917] tracking-wider">LA ODE DHARMONO</h3>
+                        <span class="text-lg font-calligraphy text-[#C5A880] mt-1">( Agus )</span>
+                        <p class="text-[#C5A880] text-[10px] font-bold uppercase tracking-[0.25em] mt-3">Mempelai Pria</p>
+                        
+                        <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent my-6"></div>
+                        
+                        <p class="text-[#2D2A26]/70 text-xs md:text-sm leading-loose tracking-wide">
+                            Putra Pertama dari Pasangan Tercinta<br>
+                            <span class="font-medium text-[#1C1917]">Bapak La Ode Mbubu</span><br>
+                            &<br>
+                            <span class="font-medium text-[#1C1917]">Almh. Ibu Wa Mohidha</span>
                         </p>
                     </div>
                 </div>
@@ -159,120 +194,122 @@
         </section>
 
         <!-- COUNTDOWN TIMER SECTION -->
-        <section class="py-16 bg-stone-900 text-white relative">
-            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200');"></div>
-            <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-                <p class="text-amber-400 uppercase tracking-widest text-xs font-semibold mb-6">Menghitung Hari Bahagia</p>
+        <section class="py-20 bg-[#1C1917] text-white relative gold-border-decor">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200');"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                <p class="text-[#C5A880] uppercase tracking-[0.25em] text-[10px] font-semibold mb-8">Menghitung Hari Bahagia</p>
                 
                 <!-- Countdown Grid -->
-                <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-lg mx-auto">
-                    <div class="bg-stone-800/80 border border-stone-700 rounded-lg p-4" data-aos="zoom-in" data-aos-delay="100">
-                        <span id="days" class="block text-2xl md:text-4xl font-bold text-amber-300">00</span>
-                        <span class="text-xxs md:text-xs text-stone-400 uppercase tracking-widest">Hari</span>
+                <div class="grid grid-cols-4 gap-3 md:gap-6 max-w-xl mx-auto">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-xs flex flex-col justify-center items-center" data-aos="zoom-in" data-aos-delay="100">
+                        <span id="days" class="block text-3xl md:text-5xl font-light text-[#FAF6F0] tracking-wide">00</span>
+                        <span class="text-[9px] text-[#C5A880] uppercase tracking-[0.2em] mt-1">Hari</span>
                     </div>
-                    <div class="bg-stone-800/80 border border-stone-700 rounded-lg p-4" data-aos="zoom-in" data-aos-delay="200">
-                        <span id="hours" class="block text-2xl md:text-4xl font-bold text-amber-300">00</span>
-                        <span class="text-xxs md:text-xs text-stone-400 uppercase tracking-widest">Jam</span>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-xs flex flex-col justify-center items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <span id="hours" class="block text-3xl md:text-5xl font-light text-[#FAF6F0] tracking-wide">00</span>
+                        <span class="text-[9px] text-[#C5A880] uppercase tracking-[0.2em] mt-1">Jam</span>
                     </div>
-                    <div class="bg-stone-800/80 border border-stone-700 rounded-lg p-4" data-aos="zoom-in" data-aos-delay="300">
-                        <span id="minutes" class="block text-2xl md:text-4xl font-bold text-amber-300">00</span>
-                        <span class="text-xxs md:text-xs text-stone-400 uppercase tracking-widest">Menit</span>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-xs flex flex-col justify-center items-center" data-aos="zoom-in" data-aos-delay="300">
+                        <span id="minutes" class="block text-3xl md:text-5xl font-light text-[#FAF6F0] tracking-wide">00</span>
+                        <span class="text-[9px] text-[#C5A880] uppercase tracking-[0.2em] mt-1">Menit</span>
                     </div>
-                    <div class="bg-stone-800/80 border border-stone-700 rounded-lg p-4" data-aos="zoom-in" data-aos-delay="400">
-                        <span id="seconds" class="block text-2xl md:text-4xl font-bold text-amber-300">00</span>
-                        <span class="text-xxs md:text-xs text-stone-400 uppercase tracking-widest">Detik</span>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-xs flex flex-col justify-center items-center" data-aos="zoom-in" data-aos-delay="400">
+                        <span id="seconds" class="block text-3xl md:text-5xl font-light text-[#FAF6F0] tracking-wide">00</span>
+                        <span class="text-[9px] text-[#C5A880] uppercase tracking-[0.2em] mt-1">Detik</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ACARA & LOKASI SECTION -->
-        <section id="acara" class="py-20 px-4 bg-amber-50/30">
+        <section id="acara" class="py-24 px-6 bg-white relative">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-serif-wedding text-5xl text-amber-700 mb-2" data-aos="fade-up">Rangkaian Acara</h2>
-                    <p class="text-stone-500 text-xs uppercase tracking-widest" data-aos="fade-up" data-aos-delay="100">Insya Allah akan diselenggarakan pada:</p>
+                    <h2 class="font-display text-3xl md:text-4xl text-[#1C1917] font-light tracking-[0.2em] mb-2" data-aos="fade-up">RANGKAIAN ACARA</h2>
+                    <p class="text-[#C5A880] font-calligraphy text-4xl" data-aos="fade-up" data-aos-delay="100">The Celebration Details</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
                     <!-- Akad Nikah Card -->
-                    <div class="bg-white rounded-2xl shadow-xl border border-amber-100 p-8 text-center relative overflow-hidden flex flex-col justify-between" data-aos="fade-up-right">
-                        <div class="absolute top-0 right-0 bg-amber-500 text-stone-900 text-xs uppercase font-bold px-4 py-1.5 rounded-bl-xl tracking-wider">
-                            Akad Nikah
+                    <div class="bg-[#FAF6F0] rounded-3xl border border-[#C5A880]/20 p-8 md:p-10 text-center relative overflow-hidden flex flex-col justify-between shadow-xs transition-all duration-500 hover:shadow-md" data-aos="fade-up-right">
+                        <div class="absolute top-0 right-0 bg-[#C5A880] text-[#1C1917] text-[9px] uppercase font-bold px-5 py-2 rounded-bl-2xl tracking-[0.2em]">
+                            Akad
                         </div>
                         <div class="my-6">
-                            <div class="text-amber-600 text-4xl mb-4"><i class="fa-solid fa-ring"></i></div>
-                            <h3 class="text-2xl font-bold text-stone-800 mb-6">Akad Nikah</h3>
-                            <div class="border-y border-stone-100 py-4 mb-6">
-                                <p class="font-semibold text-amber-800 flex items-center justify-center gap-2 mb-2">
-                                    <i class="fa-regular fa-calendar-days"></i> Senin, 06 Juli 2026
+                            <div class="text-[#C5A880] text-3xl mb-6"><i class="fa-solid fa-feather-pointed"></i></div>
+                            <h3 class="text-xl font-display font-semibold text-[#1C1917] tracking-wider mb-6">Akad Nikah</h3>
+                            
+                            <div class="border-y border-[#C5A880]/20 py-6 mb-6">
+                                <p class="font-medium text-stone-800 flex items-center justify-center gap-2 mb-3 text-xs md:text-sm tracking-wide">
+                                    <i class="fa-regular fa-calendar-days text-[#C5A880]"></i> Senin, 06 Juli 2026
                                 </p>
-                                <p class="text-stone-600 font-medium flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-clock"></i> 09.00 - 12.00 WITA
+                                <p class="text-stone-700 font-medium flex items-center justify-center gap-2 text-xs md:text-sm tracking-wide">
+                                    <i class="fa-regular fa-clock text-[#C5A880]"></i> 09.00 - 12.00 WITA
                                 </p>
                             </div>
                         </div>
                         <p class="text-stone-500 text-xs leading-relaxed italic">
-                            Acara sakral penyatuan komitmen suci di hadapan Allah SWT.
+                            Momen ijab kabul penyatuan dua jiwa di hadapan Allah SWT.
                         </p>
                     </div>
 
                     <!-- Resepsi Card -->
-                    <div class="bg-white rounded-2xl shadow-xl border border-amber-100 p-8 text-center relative overflow-hidden flex flex-col justify-between" data-aos="fade-up-left">
-                        <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs uppercase font-bold px-4 py-1.5 rounded-bl-xl tracking-wider">
+                    <div class="bg-[#FAF6F0] rounded-3xl border border-[#C5A880]/20 p-8 md:p-10 text-center relative overflow-hidden flex flex-col justify-between shadow-xs transition-all duration-500 hover:shadow-md" data-aos="fade-up-left">
+                        <div class="absolute top-0 right-0 bg-[#1C1917] text-[#FAF6F0] border-l border-b border-[#C5A880]/20 text-[9px] uppercase font-bold px-5 py-2 rounded-bl-2xl tracking-[0.2em]">
                             Resepsi
                         </div>
                         <div class="my-6">
-                            <div class="text-amber-600 text-4xl mb-4"><i class="fa-solid fa-champagne-glasses"></i></div>
-                            <h3 class="text-2xl font-bold text-stone-800 mb-6">Resepsi</h3>
-                            <div class="border-y border-stone-100 py-4 mb-6">
-                                <p class="font-semibold text-amber-800 flex items-center justify-center gap-2 mb-2">
-                                    <i class="fa-regular fa-calendar-days"></i> Senin, 06 Juli 2026
+                            <div class="text-[#C5A880] text-3xl mb-6"><i class="fa-solid fa-champagne-glasses"></i></div>
+                            <h3 class="text-xl font-display font-semibold text-[#1C1917] tracking-wider mb-6">Resepsi</h3>
+                            
+                            <div class="border-y border-[#C5A880]/20 py-6 mb-6">
+                                <p class="font-medium text-stone-800 flex items-center justify-center gap-2 mb-3 text-xs md:text-sm tracking-wide">
+                                    <i class="fa-regular fa-calendar-days text-[#C5A880]"></i> Senin, 06 Juli 2026
                                 </p>
-                                <p class="text-stone-600 font-medium flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-clock"></i> 13.00 - 17.00 WITA
+                                <p class="text-stone-700 font-medium flex items-center justify-center gap-2 text-xs md:text-sm tracking-wide">
+                                    <i class="fa-regular fa-clock text-[#C5A880]"></i> 13.00 - 17.00 WITA
                                 </p>
                             </div>
                         </div>
                         <p class="text-stone-500 text-xs leading-relaxed italic">
-                            Ungkapan rasa syukur dan suka cita bersama kerabat dan keluarga besar.
+                            Ucapan syukur, berkah, dan jamuan kebahagiaan bersama keluarga.
                         </p>
                     </div>
                 </div>
 
-                <!-- LOKASI DETAIL -->
-                <div class="bg-stone-900 rounded-3xl text-white overflow-hidden shadow-2xl" data-aos="fade-up">
+                <!-- LOKASI DETAIL (PREMIUM PANEL) -->
+                <div class="bg-[#1C1917] rounded-[2.5rem] text-[#FAF6F0] overflow-hidden shadow-2xl border border-[#C5A880]/30" data-aos="fade-up">
                     <div class="grid grid-cols-1 lg:grid-cols-12">
                         <!-- Info Alamat -->
-                        <div class="p-8 lg:p-12 lg:col-span-5 flex flex-col justify-center">
-                            <span class="text-amber-400 uppercase tracking-widest text-xs font-semibold mb-2">Lokasi Acara</span>
-                            <h3 class="text-3xl font-bold mb-6 font-serif-wedding text-amber-200">Rumah Mempelai</h3>
+                        <div class="p-8 md:p-12 lg:col-span-5 flex flex-col justify-center">
+                            <span class="text-[#C5A880] uppercase tracking-[0.3em] text-[10px] font-semibold mb-2">Tempat Pelaksanaan</span>
+                            <h3 class="text-3xl font-display font-light mb-6 text-[#FAF6F0]">Kediaman Mempelai</h3>
                             
-                            <div class="flex items-start gap-4 mb-6">
-                                <div class="bg-stone-800 p-3 rounded-full text-amber-400 mt-1">
+                            <div class="flex items-start gap-4 mb-8">
+                                <div class="bg-white/5 border border-[#C5A880]/30 p-3 rounded-full text-[#C5A880] mt-1">
                                     <i class="fa-solid fa-location-dot text-lg"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-stone-200">Alamat Lengkap</h4>
-                                    <p class="text-stone-400 text-sm mt-1 leading-relaxed">
+                                    <h4 class="font-display font-semibold text-[#FAF6F0] tracking-wide">Alamat Lengkap</h4>
+                                    <p class="text-stone-400 text-xs md:text-sm mt-2 leading-relaxed tracking-wide">
                                         Jalan Poros Napabale, Desa Korihi Kec. Lohia (Depan SD Negeri 8 Loghia), Sulawesi Tenggara.
                                     </p>
                                 </div>
                             </div>
 
-                            <a href="https://maps.google.com/?q=Desa+Korihi+Lohia" target="_blank" class="w-full text-center bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold py-3.5 px-6 rounded-xl transition duration-300 shadow-lg text-sm flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-map-location-dot"></i> Buka Rute Google Maps
+                            <a href="https://maps.google.com/?q=Desa+Korihi+Lohia" target="_blank" class="w-full text-center bg-gradient-to-r from-[#C5A880] to-[#E2C799] text-[#1C1917] font-bold py-4 px-6 rounded-2xl transition duration-300 shadow-lg text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-map-location-dot"></i> Buka Google Maps
                             </a>
                         </div>
                         
-                        <!-- Peta / Map Mock (Karena keterbatasan iframe real maps, kami sediakan visual peta yang indah) -->
-                        <div class="lg:col-span-7 bg-stone-800 min-h-[300px] relative flex items-center justify-center p-4">
-                            <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800');"></div>
-                            <div class="relative bg-stone-900/90 border border-amber-500/30 p-6 rounded-2xl max-w-sm text-center shadow-2xl backdrop-blur-sm">
-                                <i class="fa-solid fa-location-crosshairs text-amber-400 text-4xl mb-4 animate-pulse"></i>
-                                <h4 class="font-bold text-lg mb-2">Peta Lokasi Interaktif</h4>
-                                <p class="text-xs text-stone-400 mb-4 leading-relaxed">Klik tombol di samping untuk mengaktifkan GPS dan memandu Anda langsung ke SD Negeri 8 Loghia menggunakan Google Maps.</p>
-                                <span class="inline-block bg-amber-500/20 text-amber-300 text-xxs font-semibold uppercase px-3 py-1 rounded-full border border-amber-500/30">Depan SD Negeri 8 Loghia</span>
+                        <!-- Peta / Map Mock -->
+                        <div class="lg:col-span-7 bg-stone-900 min-h-[350px] relative flex items-center justify-center p-6 border-t lg:border-t-0 lg:border-l border-[#C5A880]/20">
+                            <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800');"></div>
+                            <div class="relative bg-[#1C1917]/95 border border-[#C5A880]/30 p-8 rounded-3xl max-w-sm text-center shadow-2xl backdrop-blur-sm">
+                                <i class="fa-solid fa-location-crosshairs text-[#C5A880] text-4xl mb-4 animate-pulse"></i>
+                                <h4 class="font-display font-semibold text-lg text-[#FAF6F0] tracking-wide mb-2">Panduan Lokasi</h4>
+                                <p class="text-xs text-stone-400 mb-4 leading-relaxed">Ketuk rute jalan untuk petunjuk arah langsung menuju depan SD Negeri 8 Loghia.</p>
+                                <span class="inline-block bg-[#C5A880]/15 text-[#C5A880] text-[9px] font-semibold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full border border-[#C5A880]/30">Depan SD Negeri 8 Loghia</span>
                             </div>
                         </div>
                     </div>
@@ -281,81 +318,81 @@
         </section>
 
         <!-- RSVP & WISHES SECTION -->
-        <section class="py-20 px-4 bg-amber-50/20">
+        <section class="py-24 px-6 bg-[#FAF6F0] relative overflow-hidden">
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <!-- RSVP Form -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-amber-100" data-aos="fade-right">
-                        <h3 class="text-2xl font-bold text-stone-800 mb-2">Konfirmasi Kehadiran</h3>
-                        <p class="text-xs text-stone-500 mb-6 uppercase tracking-wider">Mohon konfirmasi kehadiran Anda terlebih dahulu</p>
+                    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#C5A880]/20" data-aos="fade-right">
+                        <h3 class="text-xl md:text-2xl font-display font-semibold text-[#1C1917] tracking-wide mb-2">Kehadiran</h3>
+                        <p class="text-[10px] text-stone-500 mb-6 uppercase tracking-[0.15em]">Sampaikan Konfirmasi Kehadiran Anda</p>
 
-                        <form id="rsvp-form" onsubmit="submitRSVP(event)">
-                            <div class="mb-4">
-                                <label class="block text-xs font-bold text-stone-600 uppercase mb-2">Nama Lengkap</label>
-                                <input type="text" id="rsvp-nama" required class="w-full px-4 py-3 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition" placeholder="Masukkan nama Anda">
+                        <form id="rsvp-form" onsubmit="submitRSVP(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-stone-600 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                                <input type="text" id="rsvp-nama" required class="w-full px-4 py-3 bg-[#FAF6F0]/50 border border-stone-200 rounded-xl focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none text-xs transition placeholder-stone-400" placeholder="Contoh: Budi Santoso">
                             </div>
-                            <div class="mb-4">
-                                <label class="block text-xs font-bold text-stone-600 uppercase mb-2">Jumlah Tamu</label>
-                                <select id="rsvp-jumlah" class="w-full px-4 py-3 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition">
+                            <div>
+                                <label class="block text-[10px] font-bold text-stone-600 uppercase tracking-wider mb-2">Jumlah Tamu</label>
+                                <select id="rsvp-jumlah" class="w-full px-4 py-3 bg-[#FAF6F0]/50 border border-stone-200 rounded-xl focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none text-xs transition">
                                     <option value="1">1 Orang</option>
                                     <option value="2">2 Orang</option>
                                     <option value="3">3 Orang</option>
                                     <option value="lainnya">Lebih dari 3 Orang</option>
                                 </select>
                             </div>
-                            <div class="mb-6">
-                                <label class="block text-xs font-bold text-stone-600 uppercase mb-2">Status Kehadiran</label>
+                            <div>
+                                <label class="block text-[10px] font-bold text-stone-600 uppercase tracking-wider mb-2">Status Kehadiran</label>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <label class="flex items-center justify-center gap-2 border border-stone-200 p-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition">
-                                        <input type="radio" name="kehadiran" value="hadir" required class="accent-amber-600">
+                                    <label class="flex items-center justify-center gap-2 border border-stone-200 p-3 rounded-xl cursor-pointer hover:bg-[#FAF6F0]/40 transition">
+                                        <input type="radio" name="kehadiran" value="hadir" required class="accent-[#C5A880]">
                                         <span class="text-xs font-semibold text-stone-700">Hadir</span>
                                     </label>
-                                    <label class="flex items-center justify-center gap-2 border border-stone-200 p-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition">
-                                        <input type="radio" name="kehadiran" value="tidak_hadir" required class="accent-amber-600">
+                                    <label class="flex items-center justify-center gap-2 border border-stone-200 p-3 rounded-xl cursor-pointer hover:bg-[#FAF6F0]/40 transition">
+                                        <input type="radio" name="kehadiran" value="tidak_hadir" required class="accent-[#C5A880]">
                                         <span class="text-xs font-semibold text-stone-700">Tidak Hadir</span>
                                     </label>
                                 </div>
                             </div>
 
-                            <button type="submit" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 px-6 rounded-xl transition duration-300 text-sm flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi
+                            <button type="submit" class="w-full bg-[#1C1917] hover:bg-[#2D2A26] text-white font-semibold py-4 px-6 rounded-xl transition duration-300 text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-[10px]"></i> Kirim Konfirmasi
                             </button>
                         </form>
                     </div>
 
                     <!-- Buku Tamu / Wishes -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-amber-100 flex flex-col justify-between" data-aos="fade-left">
+                    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#C5A880]/20 flex flex-col justify-between" data-aos="fade-left">
                         <div>
-                            <h3 class="text-2xl font-bold text-stone-800 mb-2">Ucapan & Doa Restu</h3>
-                            <p class="text-xs text-stone-500 mb-6 uppercase tracking-wider">Kirimkan doa tulus untuk kebahagiaan kami</p>
+                            <h3 class="text-xl md:text-2xl font-display font-semibold text-[#1C1917] tracking-wide mb-2">Doa Restu</h3>
+                            <p class="text-[10px] text-stone-500 mb-6 uppercase tracking-[0.15em]">Kirimkan Ucapan Tulus Anda</p>
 
                             <!-- Form Kirim Ucapan -->
-                            <form id="wish-form" onsubmit="submitWish(event)" class="mb-6">
-                                <div class="mb-4">
-                                    <input type="text" id="wish-nama" required class="w-full px-4 py-3 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-xs transition" placeholder="Nama Anda">
+                            <form id="wish-form" onsubmit="submitWish(event)" class="space-y-4 mb-6">
+                                <div>
+                                    <input type="text" id="wish-nama" required class="w-full px-4 py-3 bg-[#FAF6F0]/50 border border-stone-200 rounded-xl focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none text-xs transition placeholder-stone-400" placeholder="Nama Anda">
                                 </div>
-                                <div class="mb-4">
-                                    <textarea id="wish-pesan" required rows="3" class="w-full px-4 py-3 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-xs transition" placeholder="Tuliskan ucapan & doa restu Anda di sini..."></textarea>
+                                <div>
+                                    <textarea id="wish-pesan" required rows="3" class="w-full px-4 py-3 bg-[#FAF6F0]/50 border border-stone-200 rounded-xl focus:ring-1 focus:ring-[#C5A880] focus:border-[#C5A880] outline-none text-xs transition placeholder-stone-400" placeholder="Tuliskan ucapan & doa restu di sini..."></textarea>
                                 </div>
-                                <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold py-2.5 px-6 rounded-xl text-xs transition duration-300 flex items-center gap-2">
-                                    Kirim Ucapan <i class="fa-solid fa-chevron-right"></i>
+                                <button type="submit" class="bg-gradient-to-r from-[#C5A880] to-[#E2C799] text-[#1C1917] font-semibold py-3 px-6 rounded-xl text-xs tracking-[0.15em] uppercase transition duration-300 flex items-center gap-2">
+                                    Kirim Ucapan <i class="fa-solid fa-chevron-right text-[10px]"></i>
                                 </button>
                             </form>
                         </div>
 
                         <!-- List Ucapan Berjalan (Simulated) -->
                         <div class="border-t border-stone-100 pt-6">
-                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-wider mb-4">Doa dari Sahabat</h4>
+                            <h4 class="text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-4">Doa dari Kerabat</h4>
                             <div id="wishes-container" class="space-y-4 max-h-48 overflow-y-auto pr-2">
                                 <!-- Default Wish 1 -->
-                                <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
-                                    <p class="font-bold text-stone-800 text-xs">Aris & Keluarga</p>
-                                    <p class="text-stone-600 text-xxs mt-1">Selamat untuk Kak Eni dan Kak Darmono! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Maaf belum bisa hadir langsung.</p>
+                                <div class="bg-[#FAF6F0]/50 p-3.5 rounded-xl border border-[#C5A880]/10">
+                                    <p class="font-display font-bold text-stone-800 text-xs">Aris & Keluarga</p>
+                                    <p class="text-stone-600 text-xs mt-1 leading-relaxed">Selamat untuk Kak Eni dan Kak Darmono! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Maaf belum bisa hadir langsung.</p>
                                 </div>
                                 <!-- Default Wish 2 -->
-                                <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
-                                    <p class="font-bold text-stone-800 text-xs">Siti Nurhaliza, S.Pd</p>
-                                    <p class="text-stone-600 text-xxs mt-1">Happy wedding bu guru Eni dan suami! Bahagia selalu selamanya, lancar sampai hari H yaa!</p>
+                                <div class="bg-[#FAF6F0]/50 p-3.5 rounded-xl border border-[#C5A880]/10">
+                                    <p class="font-display font-bold text-stone-800 text-xs">Siti Nurhaliza, S.Pd</p>
+                                    <p class="text-stone-600 text-xs mt-1 leading-relaxed">Happy wedding bu guru Eni dan suami! Bahagia selalu selamanya, lancar sampai hari H yaa!</p>
                                 </div>
                             </div>
                         </div>
@@ -365,33 +402,38 @@
         </section>
 
         <!-- FOOTER & TERIMA KASIH -->
-        <footer class="py-16 bg-stone-950 text-stone-400 text-center border-t border-stone-900">
-            <div class="max-w-xl mx-auto px-4">
-                <h2 class="font-serif-wedding text-5xl text-amber-200 mb-4">Eni & Dharmono</h2>
-                <p class="text-xs text-stone-500 leading-relaxed max-w-sm mx-auto mb-8">
+        <footer class="py-20 bg-[#1C1917] text-stone-400 text-center border-t border-stone-900 relative gold-border-decor">
+            <div class="max-w-xl mx-auto px-6 relative z-10 flex flex-col items-center">
+                <!-- Bottom Decorative SVG Leaf -->
+                <svg class="w-8 h-8 text-[#C5A880] mb-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M12 22C12 22 14.5 16.5 12 12C9.5 7.5 12 2 12 2M12 22C12 22 9.5 16.5 12 12C14.5 7.5 12 2 12 2" stroke-linecap="round"/>
+                </svg>
+
+                <h2 class="font-display text-3xl font-light text-[#FAF6F0] tracking-[0.2em] mb-4">ENI & DARMONO</h2>
+                <p class="text-xs text-stone-400 leading-loose max-w-sm mx-auto mb-10 tracking-wide font-light">
                     Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu bagi kami.
                 </p>
-                <p class="text-xxs tracking-widest text-stone-600 uppercase">Sampai Jumpa di Hari Bahagia Kami</p>
-                <div class="w-16 h-0.5 bg-amber-500/30 mx-auto my-6"></div>
-                <p class="text-xxs text-stone-700">&copy; 2026 Eni & Dharmono. All Rights Reserved. Created with Love.</p>
+                <p class="text-[9px] tracking-[0.3em] text-[#C5A880] uppercase">Sampai Jumpa di Hari Bahagia Kami</p>
+                <div class="w-16 h-[1px] bg-[#C5A880]/30 my-8"></div>
+                <p class="text-[9px] text-stone-600 font-light tracking-widest">&copy; 2026 Eni & Darmono. All Rights Reserved. Created with Love.</p>
             </div>
         </footer>
 
     </div>
 
     <!-- CUSTOM NOTIFICATION BANNER (Pengganti alert) -->
-    <div id="toast-notif" class="fixed top-6 right-6 z-50 bg-stone-900 border border-amber-500/30 text-white px-6 py-4 rounded-xl shadow-2xl transition-all duration-500 transform translate-y-[-150%] opacity-0 flex items-center gap-3">
-        <i id="toast-icon" class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+    <div id="toast-notif" class="fixed top-8 right-8 z-50 bg-[#1C1917] border border-[#C5A880]/50 text-white px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 transform translate-y-[-150%] opacity-0 flex items-center gap-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-[#C5A880] text-lg"></i>
         <div>
-            <p id="toast-title" class="font-bold text-xs text-amber-200">Notifikasi</p>
-            <p id="toast-body" class="text-xxs text-stone-400 mt-0.5">Pesan berhasil dikirim.</p>
+            <p id="toast-title" class="font-display font-bold text-xs text-[#FAF6F0] tracking-wide">Notifikasi</p>
+            <p id="toast-body" class="text-[10px] text-stone-400 mt-0.5">Pesan berhasil dikirim.</p>
         </div>
     </div>
 
     <script>
         // Inisialisasi AOS Animation
         AOS.init({
-            duration: 1000,
+            duration: 1200,
             once: true
         });
 
@@ -436,7 +478,7 @@
             if (forcePlay || !isPlaying) {
                 backsound.play().then(() => {
                     isPlaying = true;
-                    musicIcon.className = 'fa-solid fa-compact-disc text-xl';
+                    musicIcon.className = 'fa-solid fa-compact-disc text-2xl';
                     musicBtn.classList.add('spinning');
                 }).catch(err => {
                     console.log("Autoplay music diblokir oleh browser. Membutuhkan interaksi pengguna.");
@@ -444,7 +486,7 @@
             } else {
                 backsound.pause();
                 isPlaying = false;
-                musicIcon.className = 'fa-solid fa-music text-xl';
+                musicIcon.className = 'fa-solid fa-play text-xl';
                 musicBtn.classList.remove('spinning');
             }
         }
@@ -486,7 +528,7 @@
             document.getElementById('toast-body').innerText = body;
 
             if (type === "success") {
-                icon.className = "fa-solid fa-circle-check text-amber-400 text-lg";
+                icon.className = "fa-solid fa-circle-check text-[#C5A880] text-lg";
             } else {
                 icon.className = "fa-solid fa-triangle-exclamation text-rose-500 text-lg";
             }
@@ -523,10 +565,10 @@
             // Buat element kartu ucapan baru
             const wishesContainer = document.getElementById('wishes-container');
             const newWish = document.createElement('div');
-            newWish.className = "bg-stone-50 p-3 rounded-lg border border-stone-100 transition-all duration-500 transform translate-x-[-10px] opacity-0";
+            newWish.className = "bg-[#FAF6F0]/50 p-3.5 rounded-xl border border-[#C5A880]/10 transition-all duration-500 transform translate-x-[-10px] opacity-0";
             newWish.innerHTML = `
-                <p class="font-bold text-stone-800 text-xs">${nama}</p>
-                <p class="text-stone-600 text-xxs mt-1">${pesan}</p>
+                <p class="font-display font-bold text-stone-800 text-xs">${nama}</p>
+                <p class="text-stone-600 text-xs mt-1 leading-relaxed">${pesan}</p>
             `;
 
             // Insert di urutan paling atas
